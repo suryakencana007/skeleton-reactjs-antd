@@ -26,7 +26,7 @@ const Home = () => (
         <a href="https://palmer.chat">Community Slack</a>
       </li>
     </ul>
-    <HelloWorld />
+    {HelloWorld()}
     <Counter />
     <Link to="/counter"> to counter</Link>
   </div>

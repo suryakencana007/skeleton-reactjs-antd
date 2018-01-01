@@ -10,10 +10,14 @@ const Button = styled.button`
   border: 2px solid palevioletred;
 `;
 
-const HelloWorld = () => (
-  <div>
+const HelloWorld = () => {
+  console.log('HelloWorld');
+  return (
+    <div>
 	Hai, Hello World really excetiing ok ok
-    <Button>PUSH</Button>
-  </div>);
+      <Button>PUSH</Button>
+    </div>
+  );
+};
 
 export default HelloWorld;
