@@ -7,10 +7,13 @@ let currentApp = app;
 
 server.listen(process.env.PORT || 3000, (error) => {
   if (error) {
-    console.log(error)
+    console.log(error);
   }
-  
-  console.log('🚀 started')
+
+  console.log('🚀 started');
+  console.log('.  ');
+  console.info(`🌎  Listening on port ${process.env.PORT} in ${process.env
+    .NODE_ENV} mode on Node ${process.version}.`);
 });
 
 if (module.hot) {

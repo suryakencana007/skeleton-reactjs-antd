@@ -1,7 +1,9 @@
 import React from 'react';
-import logo from './react.svg';
+import { Link } from 'react-router-dom';
+import logo from 'kao-assets/react.svg';
 import HelloWorld from 'kao-components/hello-world';
-import './Home.css';
+import Counter from 'kao-containers/Counter';
+import 'kao-styles/Home.css';
 
 const Home = () => (
   <div className="Home">
@@ -25,6 +27,8 @@ const Home = () => (
       </li>
     </ul>
     <HelloWorld />
+    <Counter />
+    <Link to="/counter"> to counter</Link>
   </div>
 );
 

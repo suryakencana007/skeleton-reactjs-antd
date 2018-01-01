@@ -1,0 +1,12 @@
+{
+	"presets": [
+    "razzle/babel"
+  ],
+	"env": {
+    "test": {
+      "plugins": [
+        [ "babel-plugin-webpack-alias", { "config": "./webpack.config.test.js" } ]
+      ]
+    }
+  }
+}
