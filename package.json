@@ -9,7 +9,7 @@
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js"
   },
-  "repository": "http://github.com/isaacs/abbrev-js",
+  "repository": "https://gitlab.com/suryakencana007/react-razzle-init",
   "license": "WTFPL",
   "jest": {
     "moduleNameMapper": {
