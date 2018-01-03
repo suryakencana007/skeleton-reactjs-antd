@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import React from 'react';
 import express from 'express';
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
@@ -10,6 +12,8 @@ import serialize from 'serialize-javascript';
 import { ServerStyleSheet } from 'styled-components';
 import App from 'kao-client/App';
 import configureStore from 'kao-store';
+import { request as api } from 'kao-util';
+
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -18,6 +22,8 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 const server = express();
 
+server.use(cookieParser());
+server.use(compression());
 server.disable('x-powered-by');
 server.use(express.static(process.env.RAZZLE_PUBLIC_DIR));
 
@@ -45,7 +51,7 @@ function render(req, res) {
   };
 
   // Create a new Redux store instance
-  const store = configureStore(preloadedState);
+  const store = configureStore(preloadedState, { api: api(req) });
   // Create the server side style sheet
   const sheet = new ServerStyleSheet();
   const app = (<Provider store={store}>

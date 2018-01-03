@@ -13,9 +13,11 @@ module.exports = {
       {},
       config.resolve.alias, {
         kao: path.resolve(rootPath, 'src'),
+        'kao-config': path.resolve(rootPath, 'config'),
         'kao-server': path.resolve(rootPath, 'src/server'),
         'kao-store': path.resolve(rootPath, 'src/store'),
         'kao-redux': path.resolve(rootPath, 'src/redux'),
+        'kao-util': path.resolve(rootPath, 'src/utils'),
         'kao-components': path.resolve(rootPath, 'src/client/components'),
         'kao-client': path.resolve(rootPath, 'src/client'),
         'kao-containers': path.resolve(rootPath, 'src/client/containers'),

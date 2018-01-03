@@ -3,7 +3,12 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 export default {
   state: 0,
   actions: {
-    async add({ commit }, payload) {
+    async add({ dispatch, commit }, payload, { api }) {
+      const response = await api({
+        url: 'marketprice/category/10',
+        method: 'get',
+      }, dispatch);
+      console.log(response);
       await delay(1);
       commit('addDone', payload);
     },

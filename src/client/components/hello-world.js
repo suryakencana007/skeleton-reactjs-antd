@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import config from 'kao-config';
 
 const Button = styled.button`
   border-radius: 3px;
@@ -15,7 +16,7 @@ const HelloWorld = () => {
   return (
     <div>
 	Hai, Hello World really excetiing ok ok
-      <Button>PUSH</Button>
+      <Button>PUSH {config.SEO.title}</Button>
     </div>
   );
 };
