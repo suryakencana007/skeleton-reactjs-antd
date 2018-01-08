@@ -1,8 +1,19 @@
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const rootPath = path.resolve(__dirname, './');
+
+const babelOptions = ({ options, plugins }) => {
+  // Get the correct `include` option, since that hasn't changed.
+  // This tells Razzle which directories to transform.
+  const razzleOptions = Object.assign({}, options, {
+    plugins,
+  });
+
+  return razzleOptions;
+};
 
 module.exports = {
   modify(defaultConfig, { target, dev }, webpack) {
@@ -26,6 +37,12 @@ module.exports = {
       },
     );
 
+    // Safely locate Babel-Loader in Razzle's webpack internals
+    const babelLoader = config.module.rules.findIndex(rule => rule.options && rule.options.babelrc);
+    const { options } = config.module.rules[babelLoader];
+
+    let razzleOptions = null;
+
     if (target === 'node' && !dev) {
       config.plugins.push(new HtmlWebpackPlugin({
         title: 'Summer',
@@ -34,6 +51,39 @@ module.exports = {
         template: 'src/server/templates/index.prod.pug',
       }));
       config.plugins.push(new HtmlWebpackPugPlugin());
+      // razzleOptions = babelOptions({
+      //   options,
+      //   plugins: [
+      //     ['babel-plugin-styled-components', {
+      //       ssr: true,
+      //       displayName: false,
+      //       minify: true,
+      //     }],
+      //   ],
+      // });
+    }
+    if (target === 'web') {
+      config.module.rules.push({
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              // theme vars, also can use theme.js instead of this.
+              modifyVars: { '@brand-primary': '#1DA57A' },
+            },
+          },
+        ],
+      });
+      razzleOptions = babelOptions({
+        options,
+        plugins: [
+          ['import', { libraryName: 'antd-mobile', style: true }],
+        ],
+      });
+    }
+    if (razzleOptions) {
+      config.module.rules[babelLoader].options = razzleOptions;
     }
 
     return config;

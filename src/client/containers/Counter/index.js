@@ -1,5 +1,5 @@
 import CounterComponent from './components';
-import { connect } from 'react-redux';
+import ReduxComponent from 'kao-containers/ReduxComponent';
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
+export default ReduxComponent(
   ({ count }) => ({ count }),
   mapDispatchToProps,
 )(CounterComponent);

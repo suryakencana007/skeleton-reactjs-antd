@@ -1,0 +1,5 @@
+// dep
+yarn add axios babel-runtime express pug react react-dom react-redux react-router-dom redux redux-thunk serialize-javascript styled-components
+
+// dev
+yarn add --dev prop-types raf razzle eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react html-webpack-plugin html-webpack-pug-plugin react-test-renderer

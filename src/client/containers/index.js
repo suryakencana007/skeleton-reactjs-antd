@@ -1,5 +1,7 @@
-import Home from 'kao-containers/Home';
+import Home from './home';
+import Counter from './Counter';
 
 export {
   Home,
+  Counter,
 };
