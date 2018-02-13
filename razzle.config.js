@@ -1,5 +1,4 @@
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -16,7 +15,7 @@ const babelOptions = ({ options, plugins }) => {
 };
 
 module.exports = {
-  modify(defaultConfig, { target, dev }, webpack) {
+  modify(defaultConfig, { target, dev }) {
     const config = defaultConfig; // stay immutable here
 
     // alias for architecture import
@@ -34,7 +33,7 @@ module.exports = {
         'kao-containers': path.resolve(rootPath, 'src/client/containers'),
         'kao-assets': path.resolve(rootPath, 'src/client/assets'),
         'kao-styles': path.resolve(rootPath, 'src/client/styles'),
-      },
+      }
     );
 
     // Safely locate Babel-Loader in Razzle's webpack internals
@@ -51,16 +50,6 @@ module.exports = {
         template: 'src/server/templates/index.prod.pug',
       }));
       config.plugins.push(new HtmlWebpackPugPlugin());
-      // razzleOptions = babelOptions({
-      //   options,
-      //   plugins: [
-      //     ['babel-plugin-styled-components', {
-      //       ssr: true,
-      //       displayName: false,
-      //       minify: true,
-      //     }],
-      //   ],
-      // });
     }
     if (target === 'web') {
       config.module.rules.push({
@@ -70,7 +59,7 @@ module.exports = {
             loader: 'less-loader',
             options: {
               // theme vars, also can use theme.js instead of this.
-              modifyVars: { '@brand-primary': '#1DA57A' },
+              modifyVars: { '@primary-color': '#1DA57A' },
             },
           },
         ],
@@ -78,7 +67,7 @@ module.exports = {
       razzleOptions = babelOptions({
         options,
         plugins: [
-          ['import', { libraryName: 'antd-mobile', style: true }],
+          ['import', { libraryName: 'antd', style: true }],
         ],
       });
     }

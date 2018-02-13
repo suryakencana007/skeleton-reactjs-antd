@@ -4,6 +4,9 @@
   "description": "React Redux SSR boilerplate for agent desktop web",
   "author": "Nanang Suryadi <nanang.jobs@gmail.com>",
   "scripts": {
+    "clean": "rm -rf node_modules && rm -rf yarn.lock && yarn install",
+    "clean:prod": "rm -rf node_modules && rm -rf yarn.lock && yarn install --prod",
+    "lint": "node_modules/.bin/eslint_d -c .eslintrc — ext .js src",
     "start": "razzle start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
@@ -26,9 +29,10 @@
     }
   },
   "dependencies": {
-    "antd-mobile": "^2.1.3",
+    "antd": "^3.2.1",
     "axios": "^0.17.1",
     "babel-runtime": "^6.26.0",
+    "clean-css": "^4.1.9",
     "compression": "^1.7.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
@@ -48,12 +52,13 @@
   "devDependencies": {
     "babel-plugin-import": "^1.6.3",
     "babel-plugin-styled-components": "^1.4.0",
-    "clean-css": "^4.1.9",
-    "eslint": "^4.14.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.5.1",
+    "eslint_d": "^5.2.2",
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-pug-plugin": "^0.2.1",
     "less": "^2.7.3",

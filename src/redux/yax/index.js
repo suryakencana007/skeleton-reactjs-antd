@@ -26,7 +26,7 @@ export default function yax(options = {}, enhancer, extraArguments) {
   const _store = createStore(
     _modules.makeReducers(),
     options.state || {},
-    enhancer ? compose(enhancer, rootMW) : rootMW,
+    enhancer ? compose(enhancer, rootMW) : rootMW
   );
 
   function registerModule(path, rawModule) {
@@ -94,12 +94,12 @@ export default function yax(options = {}, enhancer, extraArguments) {
 
   function _registerAction(type, handler, local) {
     const entry = _actions[type] || (_actions[type] = []);
-    entry.push((payload, extraArguments) => {
+    entry.push((payload, args) => {
       let res = handler({
         dispatch: local.dispatch,
         commit: local.commit,
         select: local.select,
-      }, payload, extraArguments);
+      }, payload, args);
       if (!isPromise(res)) {
         res = Promise.resolve(res);
       }

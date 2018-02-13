@@ -31,8 +31,8 @@ export function mapReducers (reducers) {
   };
 }
 
-export function getNestedState (state, path) {
+export function getNestedState (state_, path) {
   return path.length
-    ? path.reduce((state, key) => state[key], state)
-    : state;
+    ? path.reduce((state, key) => state[key], state_)
+    : state_;
 }

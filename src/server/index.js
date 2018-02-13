@@ -11,7 +11,7 @@ import { renderRoutes } from 'react-router-config';
 import { renderToString } from 'react-dom/server';
 import serialize from 'serialize-javascript';
 // Import the StyledComponents SSR util
-import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import routers from 'kao-client/routes';
 import configureStore from 'kao-store';
 import { request as api } from 'kao-util';
@@ -63,14 +63,18 @@ function render(req, res) {
   // Create the server side style sheet
   const sheet = new ServerStyleSheet();
 
-  const app = (<Provider store={store}>
-    <StaticRouter
-      context={context}
-      location={req.url}
-    >{renderRoutes(routers)}
-    </StaticRouter>
-  </Provider>);
-  const markup = renderToString(sheet.collectStyles(app));
+  const app = (
+    <Provider store={store}>
+      <StaticRouter
+        context={context}
+        location={req.url}
+      ><StyleSheetManager
+        sheet={sheet.instance}>
+        {renderRoutes(routers)}
+       </StyleSheetManager>
+      </StaticRouter>
+    </Provider>);
+  const markup = renderToString(app);
   const cssmin = minifyCss(sheet.getStyleTags());
   const state = `window.__PRELOADED_STATE__ = ${serialize(store.getState())}`;
   if (context.url) {
@@ -98,7 +102,7 @@ server.get('*', (req, res) => {
 
 if (isDevelopment) {
   server.use((err, req, res, next) => {
-    // console.log(err);
+    console.log(err);
     res.status(err.status || 500);
     res.redirect('/500');
   });

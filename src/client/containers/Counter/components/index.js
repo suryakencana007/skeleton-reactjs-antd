@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { KaoContainer, KaoSpace, KaoFlex, KaoCol } from 'kao-components/ui';
 
 const Button = styled.button`
   /* Adapt the colours based on primary prop */
@@ -20,15 +21,20 @@ const propTypes = {
 };
 
 const CounterComponent = ({ count, increment, decrement }) => (
-  <div>
-    <p>
-      {count}
-    </p>
-    <Button primary onClick={() => increment(1)}>
-          Increment
-    </Button>
-    <Button onClick={() => decrement(1)}>Decrement</Button>
-  </div>
+  <KaoContainer>
+    <KaoFlex justify="center">
+      <KaoCol span={24}>
+        <p>
+          {count}
+        </p>
+        <Button primary onClick={() => increment(1)}>
+              Increment
+        </Button>
+        <KaoSpace />
+        <Button onClick={() => decrement(1)}>Decrement</Button>
+      </KaoCol>
+    </KaoFlex>
+  </KaoContainer>
 );
 
 CounterComponent.propTypes = propTypes;

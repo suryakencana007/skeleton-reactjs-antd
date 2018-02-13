@@ -26,7 +26,7 @@ const fetch = (req) => {
     let { url } = options;
     const {
       auth = false,
-      req, // opt for node
+      req, // eslint-disable-line no-shadow
       method = 'get',
       data,
     } = options;

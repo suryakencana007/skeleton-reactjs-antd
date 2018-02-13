@@ -19,6 +19,6 @@ export default function (preloadedState, extraArgs = {}) {
       },
       modules: models,
     }, createStore(preloadedState),
-    extraArgs,
+    extraArgs
   );
 }

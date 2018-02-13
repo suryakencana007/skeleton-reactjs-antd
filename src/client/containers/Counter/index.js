@@ -14,5 +14,5 @@ const mapDispatchToProps = (dispatch) => {
 
 export default ReduxComponent(
   ({ count }) => ({ count }),
-  mapDispatchToProps,
+  mapDispatchToProps
 )(CounterComponent);

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Flex } from 'antd-mobile';
 
-export default styled(Flex.Item)`
+export const KaoContainer = styled.div`
   max-width: 31.4rem;
+  margin: 0 auto;
 `;

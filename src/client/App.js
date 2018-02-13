@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import withRouter from 'react-router-dom/withRouter';
 import styled from 'styled-components';
 import { renderRoutes } from 'react-router-config';
-import KaoContainer, { KaoFlex } from 'kao-components/ui';
 import 'kao-styles/App.css';
 
 
@@ -14,7 +13,7 @@ const Wrapper = styled.div`
   padding-bottom: 0px;
 `;
 
-const Content = styled(KaoContainer)`
+const Content = styled.div`
   background: rgb(245, 245, 245);
   padding: 0rem 0px 1.6rem;
   overflow-x: hidden;
@@ -29,11 +28,9 @@ const propTypes = {
 
 const App = withRouter(({ route }) => (
   <Wrapper>
-    <KaoFlex direction="row" justify="center">
-      <Content id="main" data-qa-id="qa_main">
-        {renderRoutes(route.routes)}
-      </Content>
-    </KaoFlex>
+    <Content id="main" data-qa-id="qa_main">
+      {renderRoutes(route.routes)}
+    </Content>
   </Wrapper>
 ));
 

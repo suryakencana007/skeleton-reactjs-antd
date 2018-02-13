@@ -1,44 +1,60 @@
 import React from 'react';
-// import styled from 'styled-components';
-import { Modal, Card } from 'antd-mobile';
-import { KaoButton, KaoSpace, KaoCard } from 'kao-components/ui';
+import { Modal } from 'antd';
+import { KaoFlex, KaoRow, KaoCol, KaoContainer, KaoButton, KaoSpace } from 'kao-components/ui';
 import config from 'kao-config';
 
-const alert = Modal.alert;
 
 const OnKlik = () => {
   console.log('roooo');
-  alert('Delete', 'Are you sure???', [
-    { text: 'Cancel', onPress: () => console.log('cancel') },
-    { text: 'Ok', onPress: () => console.log('ok') },
-  ]);
+  // alert('Delete', 'Are you sure???', [
+  //   { text: 'Cancel', onPress: () => console.log('cancel') },
+  //   { text: 'Ok', onPress: () => console.log('ok') },
+  // ]);
+
+  Modal.info({
+    title: 'This is a notification message',
+    content: (
+      <div>
+        <p>some messages...some messages...</p>
+        <p>some messages...some messages...</p>
+      </div>
+    ),
+    onOk() {},
+  });
 };
+
+
 
 const HelloWorld = () => {
   console.log('HelloWorld');
   return (
-    <div>
-	Hai, Hello World really excetiing ok ok
-      <KaoButton>PUSH {config.SEO.title}</KaoButton>
+    <KaoContainer>
+      <KaoFlex justify="center">
+        <KaoCol span={24}>
+          Hai, Hello World really excetiing ok ok
+        </KaoCol>
+      </KaoFlex>
       <KaoSpace />
-      <KaoButton
-        type="primary"
-        onClick={OnKlik}
-      > Button from Hell Yeah
-      </KaoButton>
+      <KaoRow>
+        <KaoCol span={12}>
+          <KaoButton type="primary">PUSH {config.SEO.title}</KaoButton>
+        </KaoCol>
+        <KaoCol span={12}>
+          <KaoButton type="primary">PUSH oit{config.SEO.title}</KaoButton>
+        </KaoCol>
+      </KaoRow>
       <KaoSpace />
-      <KaoCard>
-        <Card.Header
-          title="This is title"
-          thumb="https://cloud.githubusercontent.com/assets/1698185/18039916/f025c090-6dd9-11e6-9d86-a4d48a1bf049.png"
-          extra={<span>this is extra</span>}
-        />
-        <Card.Body>
-          <div>This is content of `Card`</div>
-        </Card.Body>
-        <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
-      </KaoCard>
-    </div>
+      <KaoFlex justify="center">
+        <KaoCol span={24}>
+          <KaoButton
+            type="primary"
+            onClick={OnKlik}
+          > Button from Hell Yeah
+          </KaoButton>
+        </KaoCol>
+      </KaoFlex>
+      <KaoSpace size="xl" />
+    </KaoContainer>
   );
 };
 

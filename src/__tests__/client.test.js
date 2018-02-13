@@ -17,7 +17,7 @@ describe('<App />', () => {
           <App />
         </MemoryRouter>
       </Provider>,
-      div,
+      div
     );
   });
 });

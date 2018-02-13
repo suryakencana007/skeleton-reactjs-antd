@@ -1,12 +1,14 @@
+import React from 'react';
 import styled from 'styled-components';
-import { Button } from 'antd-mobile';
+import { Button } from 'antd';
 
+const btn = ({ children, ...rest }) => (
+  <Button {...rest}>
+  {children}
+  </Button>);
 
-const KaoButton = styled(Button)`
+export const KaoButton = styled(btn)`
 	border-radius: 3px !important;
   padding: 0.25em 1em;
   margin: 0 1em;
-  background: transparent;
 `;
-
-export default KaoButton;
