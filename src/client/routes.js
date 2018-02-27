@@ -1,4 +1,4 @@
-import { Home, Counter } from 'kao-containers';
+import { Home, Counter, Gadai, GadaiTaksiran } from 'kao-containers';
 import App from './app';
 
 export default [
@@ -14,6 +14,14 @@ export default [
         path: '/counter',
         component: Counter,
       },
+      {
+        path: '/gadai',
+        component: Gadai,
+      },
+      {
+        path: '/taksiran',
+        component: GadaiTaksiran
+      }
     ],
   },
 ];

@@ -3,13 +3,13 @@ html
     head
         meta(charset="utf-8")
         meta(name="viewport", content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui")
-        title Summer
-        link(rel="shortcut icon", type="image/png", href="/logo.png")
+        !=helmet.meta.toString()
+        !=helmet.title.toString()
+        !=helmet.link.toString()
         link(rel="shortcut icon", type="image/png", href=`http://${host}:${port}/favicon.png`)
         if assets.client.css
             link(rel="stylesheet", href=`${assets.client.css}`)
-        style
-            != styles
+        !=styles
     body
         #app!=markup
         script(src=`${assets.client.js}`, defer=true, crossorigin=true)

@@ -8,7 +8,9 @@ const btn = ({ children, ...rest }) => (
   </Button>);
 
 export const KaoButton = styled(btn)`
-	border-radius: 3px !important;
+  min-width: 100px;
+	border-radius: 20px !important;
   padding: 0.25em 1em;
-  margin: 0 1em;
+  margin: 0;
+  height: 40px !important;
 `;

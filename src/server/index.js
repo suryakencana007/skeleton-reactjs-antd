@@ -11,10 +11,13 @@ import { renderRoutes } from 'react-router-config';
 import { renderToString } from 'react-dom/server';
 import serialize from 'serialize-javascript';
 // Import the StyledComponents SSR util
-import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
+import { ServerStyleSheet } from 'styled-components';
+import { Helmet } from 'react-helmet';
 import routers from 'kao-client/routes';
 import configureStore from 'kao-store';
 import { request as api } from 'kao-util';
+
+process.title = process.env.RAZZLE_APP;
 
 // razzle asset files
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
@@ -46,9 +49,16 @@ if (!isDevelopment) {
 }
 
 function minifyCss(styleTags) {
+  console.log(styleTags);
   return new cleanCSS({
-    compatibility: '*',
-  }).minify(styleTags);
+    level: {
+      2: {
+        removeDuplicateRules: true, // turns on removing duplicate rules
+        mergeNonAdjacentByBody: true,
+        restructure: true,
+      }
+    }
+  }).minify(styleTags.trim());
 }
 
 function render(req, res) {
@@ -62,20 +72,20 @@ function render(req, res) {
   const store = configureStore(preloadedState, { api: api(req) });
   // Create the server side style sheet
   const sheet = new ServerStyleSheet();
-
   const app = (
     <Provider store={store}>
       <StaticRouter
         context={context}
         location={req.url}
-      ><StyleSheetManager
-        sheet={sheet.instance}>
-        {renderRoutes(routers)}
-       </StyleSheetManager>
+      >
+      {renderRoutes(routers)}
       </StaticRouter>
     </Provider>);
-  const markup = renderToString(app);
-  const cssmin = minifyCss(sheet.getStyleTags());
+  const markup = renderToString(sheet.collectStyles(app));
+  // create meta html for SEO with react-helmet
+  const helmet = Helmet.renderStatic();
+  // const cssmin = minifyCss(sheet.getStyleTags());
+  // console.log(cssmin);
   const state = `window.__PRELOADED_STATE__ = ${serialize(store.getState())}`;
   if (context.url) {
     res.redirect(context.url);
@@ -84,7 +94,8 @@ function render(req, res) {
       state,
       markup,
       assets,
-      styles: cssmin.styles,
+      helmet,
+      styles: sheet.getStyleTags(),
       host: process.env.HOST,
       port: process.env.PORT,
     });
@@ -107,5 +118,6 @@ if (isDevelopment) {
     res.redirect('/500');
   });
 }
+
 
 export default server;

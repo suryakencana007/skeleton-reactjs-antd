@@ -15,5 +15,5 @@ const sizeChooser = (type) => {
   }
 };
 export const KaoSpace = styled.div`
-  height: ${props => props.size && sizeChooser(props.size) || 3}px;
+  height: ${props => props.size && sizeChooser(props.size) || 1}px;
 `;

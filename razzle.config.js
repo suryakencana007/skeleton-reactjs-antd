@@ -43,6 +43,11 @@ module.exports = {
     let razzleOptions = null;
 
     if (target === 'node' && !dev) {
+      config.entry = Object.assign({}, {
+        'server': config.entry,
+        'argnode': path.resolve(rootPath, 'src/server/arguments.js')
+      });
+      config.output.filename = '[name].js';
       config.plugins.push(new HtmlWebpackPlugin({
         title: 'Summer',
         filetype: 'pug',
@@ -59,7 +64,15 @@ module.exports = {
             loader: 'less-loader',
             options: {
               // theme vars, also can use theme.js instead of this.
-              modifyVars: { '@primary-color': '#1DA57A' },
+              modifyVars: {
+                '@primary-color': '#28B43C',
+                // '@info-color': '#1DA57A',
+                '@layout-header-background': '#fff',
+                '@success-color': '',
+                '@font-family-no-number': 'Source Sans Pro, sans-serif',
+                '@border-radius-base': 0,
+                '@border-radius-sm': 0
+              },
             },
           },
         ],
