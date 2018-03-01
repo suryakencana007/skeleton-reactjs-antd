@@ -24,7 +24,7 @@ export default initialState => createStore => (reducer, preloadedState, enhancer
   const store = createStore(
     composeReducers,
     Object.assign({}, preloadedState, initialState),
-    enhancer ? compose(enhancer, enhancers) : enhancers,
+    enhancer ? compose(enhancer, enhancers) : enhancers
   );
 
   if (process.env.NODE_ENV === 'development' && module.hot) {

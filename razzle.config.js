@@ -1,5 +1,4 @@
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -16,7 +15,7 @@ const babelOptions = ({ options, plugins }) => {
 };
 
 module.exports = {
-  modify(defaultConfig, { target, dev }, webpack) {
+  modify(defaultConfig, { target, dev }) {
     const config = defaultConfig; // stay immutable here
 
     // alias for architecture import
@@ -34,7 +33,7 @@ module.exports = {
         'kao-containers': path.resolve(rootPath, 'src/client/containers'),
         'kao-assets': path.resolve(rootPath, 'src/client/assets'),
         'kao-styles': path.resolve(rootPath, 'src/client/styles'),
-      },
+      }
     );
 
     // Safely locate Babel-Loader in Razzle's webpack internals
@@ -44,6 +43,11 @@ module.exports = {
     let razzleOptions = null;
 
     if (target === 'node' && !dev) {
+      config.entry = Object.assign({}, {
+        'server': config.entry,
+        'argnode': path.resolve(rootPath, 'src/server/arguments.js')
+      });
+      config.output.filename = '[name].js';
       config.plugins.push(new HtmlWebpackPlugin({
         title: 'Summer',
         filetype: 'pug',
@@ -51,16 +55,6 @@ module.exports = {
         template: 'src/server/templates/index.prod.pug',
       }));
       config.plugins.push(new HtmlWebpackPugPlugin());
-      // razzleOptions = babelOptions({
-      //   options,
-      //   plugins: [
-      //     ['babel-plugin-styled-components', {
-      //       ssr: true,
-      //       displayName: false,
-      //       minify: true,
-      //     }],
-      //   ],
-      // });
     }
     if (target === 'web') {
       config.module.rules.push({
@@ -70,7 +64,15 @@ module.exports = {
             loader: 'less-loader',
             options: {
               // theme vars, also can use theme.js instead of this.
-              modifyVars: { '@brand-primary': '#1DA57A' },
+              modifyVars: {
+                '@primary-color': '#28B43C',
+                // '@info-color': '#1DA57A',
+                '@layout-header-background': '#fff',
+                '@success-color': '',
+                '@font-family-no-number': 'Source Sans Pro, sans-serif',
+                '@border-radius-base': 0,
+                '@border-radius-sm': 0
+              },
             },
           },
         ],
@@ -78,7 +80,7 @@ module.exports = {
       razzleOptions = babelOptions({
         options,
         plugins: [
-          ['import', { libraryName: 'antd-mobile', style: true }],
+          ['import', { libraryName: 'antd', style: true }],
         ],
       });
     }
