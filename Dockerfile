@@ -5,11 +5,11 @@ ENV TZ=Asia/Jakarta
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Create app directory
-RUN mkdir -p /app
-WORKDIR /app
+RUN mkdir -p /src
+WORKDIR /src
 
 # Bundle app source
-ADD . /app
+ADD . /src
 
 RUN npm install \
 	&& npm run build \
