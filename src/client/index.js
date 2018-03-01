@@ -23,10 +23,10 @@ hydrate(
   document.getElementById('app'),
   () => {
     // for production
-    if (!isDevelopment) {
-      const jssStyled = document.querySelectorAll('[data-styled-components]')[0];
-      if (jssStyled && jssStyled.parentNode) jssStyled.parentNode.removeChild(jssStyled);
-    }
+    // if (!isDevelopment) {
+    //   const jssStyled = document.querySelectorAll('[data-styled-components]')[0];
+    //   if (jssStyled && jssStyled.parentNode) jssStyled.parentNode.removeChild(jssStyled);
+    // }
   }
 );
 

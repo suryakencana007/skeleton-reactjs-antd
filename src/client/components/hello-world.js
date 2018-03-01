@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'antd';
-import { KaoFlex, KaoRow, KaoCol, KaoContainer, KaoButton, KaoSpace } from 'kao-components/ui';
+import { KaoFlex, KaoRow, KaoCol, KaoContainer, KaoButton, KaoSpace, KaoCard } from 'kao-components/ui';
 import config from 'kao-config';
 
 
@@ -32,9 +32,16 @@ const HelloWorld = () => {
       <KaoFlex justify="center">
         <KaoCol span={24}>
           Hai, Hello World really excetiing ok ok
+          <KaoSpace size="xl" />
+          <KaoCard
+            hoverable
+            bordered={false}
+            style={{ width: 240 }}
+            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+          />
         </KaoCol>
       </KaoFlex>
-      <KaoSpace />
+      <KaoSpace size="xl" />
       <KaoRow>
         <KaoCol span={12}>
           <KaoButton type="primary">PUSH {config.SEO.title}</KaoButton>
