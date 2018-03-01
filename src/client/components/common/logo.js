@@ -58,3 +58,17 @@ export const  KaoBG = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 `;
+
+export const KaoBadge = styled.div.attrs({
+  padding: props => (props.size - props.box) / 2,
+})`
+  background-color: ${props => props.paint && props.paint || '#fff'};
+  border-radius: 15px;
+  color: ${props => props.color && props.color || '#000'};
+  display: inline-block;
+  height: ${props => (props.size / 16) || 2}rem;
+  margin: ${10 / 16}rem;
+  padding: ${props => (props.padding / 16) || 0.5}rem;
+  width: ${props => (props.size / 16) || 2}rem;
+`;
+

@@ -8,9 +8,8 @@ import {
   KaoCol,
   KaoButton
 } from 'kao-components/ui';
-
+import { FieldRight } from 'kao-components/common';
 const Option = Select.Option;
-
 
 const FormItem = Form.Item;
 const FormWrapper = styled(Form)`
@@ -74,16 +73,17 @@ export const SimulasiTabPerhiasan = () => (
     <FormWrapper layout="vertical">
       <FormPerhiasan />
       <KaoRow>
-        <KaoCol xs={24} md={6}>
+        <KaoCol xs={24} md={12}>
           <KaoButton
+            size={200}
             type="dashed"
           >
             <Icon type="plus" /> Tambah Perhiasan lain
           </KaoButton>
         </KaoCol>
-        <KaoCol xs={24} md={4} push={14} style={{ textAlign: 'right' }}>
-          <KaoButton type="primary">Taksir</KaoButton>
-        </KaoCol>
+        <FieldRight xs={24} md={12}>
+          <KaoButton size={180} type="primary">Taksir</KaoButton>
+        </FieldRight>
       </KaoRow>
     </FormWrapper>
   </Wrapper>

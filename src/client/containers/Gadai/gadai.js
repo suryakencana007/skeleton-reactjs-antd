@@ -60,7 +60,6 @@ const SimulasiCard = styled(KaoCard)`
     width: 46%;
   }
 `;
-
 const SimulasiTabKey = [
   {  key: 'perhiasan', tab: 'Perhiasan Emas' },
   {  key: 'logam', tab: 'Logam Mulia' }
@@ -69,6 +68,20 @@ const SimulasiTabContent = {
   perhiasan: <SimulasiTabPerhiasan />,
   logam: <SimulasiTabLogam />
 };
+
+const Slick = styled.div`
+  & .slick-slide {
+    text-align: center;
+    height: 160px;
+    line-height: 160px;
+    background: #364d79;
+    overflow: hidden;
+  }
+
+  .slick-slide h3 {
+    color: #fff;
+  }
+`;
 export default class Gadai extends React.PureComponent<{}> {
   state = {
     tab: 'perhiasan',
@@ -121,11 +134,16 @@ export default class Gadai extends React.PureComponent<{}> {
           <TitleContainer span={10} size={24} bold="true">Keuntungan Gadai Syariah di Pinjam.co.id</TitleContainer>
           <KaoSpace size="lg" />
           <GridKeuntungan />
-          <KaoFlex justify="center" style={{ height: 400 }}>
-            <KaoCol xs={8}>
-              <Testimony />
-            </KaoCol>
+          <KaoSpace size="lg" />
+          <KaoSpace size="lg" />
+          <KaoSpace size="lg" />
+          <TitleContainer span={10} size={24} bold="true">Pendapat Mereka</TitleContainer>
+          <KaoSpace size="lg" />
+          <KaoFlex justify="center">
+            <Testimony />
           </KaoFlex>
+          <KaoSpace size="lg" />
+          <KaoSpace size="lg" />
         </KaoContainer>
       </Wrapper>
     );

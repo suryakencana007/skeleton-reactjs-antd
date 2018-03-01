@@ -1,6 +1,8 @@
 import React from 'react';
-import Slider from 'react-slick';
-import { Icon, Carousel } from 'antd';
+import { Icon } from 'antd';
+import {
+  KaoSlick,
+} from 'kao-components/ui';
 import TestimonyItem from './testimony-item';
 
 
@@ -43,26 +45,21 @@ const data = [
     }
 ];
 
+
 const Pointer = ({ className, style, onClick, type }) => (
     <Icon type={type} onClick={onClick} />
 );
 export default class Testimony extends React.Component<{}> {
   render() {
-    const settings = {
-        arrows: true,
-        infinite: false,
-        slidesToShow: 3,
-        slidesToScroll: 2,
-        prevArrow: <Pointer type="left" />,
-        nextArrow: <Pointer type="right" />
-    };
     return (
-      <Slider {...settings}>
-        {data.map(testimonial => (
-            <div key={testimonial.name}>{testimonial.name}</div>
-            )
-        )}
-      </Slider>
+      <KaoSlick len={3} size={280} height={270} infinite={false}>
+        <TestimonyItem data={data[0]} />
+        <TestimonyItem data={data[1]} />
+        <TestimonyItem data={data[2]} />
+        <TestimonyItem data={data[3]} />
+        <TestimonyItem data={data[4]} />
+        <TestimonyItem data={data[5]} />
+      </KaoSlick>
     );
   }
 }

@@ -13,4 +13,5 @@ export const KaoButton = styled(btn)`
   padding: 0.25em 1em;
   margin: 0;
   height: 40px !important;
+  width: ${props => (props.size || 40) / 16}rem;
 `;

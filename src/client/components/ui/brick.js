@@ -17,3 +17,12 @@ const sizeChooser = (type) => {
 export const KaoSpace = styled.div`
   height: ${props => props.size && sizeChooser(props.size) || 1}px;
 `;
+
+export const KaoList = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  li {
+    margin: 8px 0;
+  }
+`;

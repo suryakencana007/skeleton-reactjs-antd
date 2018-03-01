@@ -10,7 +10,7 @@ const RootMenu = styled(Menu)`
   border-bottom: none !important;
   margin: 5px 0 0 0 !important;
   position: relative;
-  line-height: 58px !important;
+  line-height: 57px !important;
   z-index: 999;
 `;
 const SubItem = styled(Menu.Item)`
@@ -20,13 +20,11 @@ const SubItem = styled(Menu.Item)`
     background-color: rgb(225, 225, 225);
   }
 `;
-
 const RootSub = styled(SubMenu)`
   &:hover {
     background-color: rgb(225, 225, 225);
   }
 `;
-
 const Redot = styled.span`
   width: 6px;
   height: 6px;

@@ -8,19 +8,15 @@ export default [
       {
         path: '/',
         exact: true,
-        component: Home,
-      },
-      {
-        path: '/counter',
-        component: Counter,
-      },
-      {
-        path: '/gadai',
         component: Gadai,
       },
       {
-        path: '/taksiran',
-        component: GadaiTaksiran
+        path: '/counter',
+        component: Home,
+      },
+      {
+        path: '/gadai',
+        component: GadaiTaksiran,
       }
     ],
   },

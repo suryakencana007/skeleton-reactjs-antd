@@ -4,7 +4,7 @@ import {
   KaoRow,
   KaoCol,
 } from 'kao-components/ui';
-import { SubTitle } from 'kao-components/common';
+import { SubTitle, FieldRight } from 'kao-components/common';
 
 const PanelBox = styled(KaoRow)`
   border: solid 1px #f3f3f3;
@@ -18,9 +18,10 @@ const FieldBox = styled(KaoRow)`
     float: left;
   }
   ${KaoCol}:last-child span {
-    float: right;
+    text-align: right;
   }
 `;
+
 
 export const PanelTaksiran = () => {
   return (
@@ -33,11 +34,11 @@ export const PanelTaksiran = () => {
               Jumlah Pencairan
             </span>
           </KaoCol>
-          <KaoCol md={10}>
+          <FieldRight md={10}>
             <span>
               Rp. 12.000.000
             </span>
-          </KaoCol>
+          </FieldRight>
         </FieldBox>
 
         <FieldBox>
@@ -47,11 +48,11 @@ export const PanelTaksiran = () => {
               (dibayarkan terpisah)
             </span>
           </KaoCol>
-          <KaoCol md={10}>
+          <FieldRight md={10}>
             <span>
               Rp. 15.000.000
             </span>
-          </KaoCol>
+          </FieldRight>
         </FieldBox>
 
       </KaoCol>
@@ -64,11 +65,11 @@ export const PanelTaksiran = () => {
               Jumlah Pencairan
             </span>
           </KaoCol>
-          <KaoCol md={10}>
+          <FieldRight md={10}>
             <span>
               Rp. 15.000.000
             </span>
-          </KaoCol>
+          </FieldRight>
         </FieldBox>
 
         <FieldBox>
@@ -77,11 +78,11 @@ export const PanelTaksiran = () => {
               Biaya titip
             </span>
           </KaoCol>
-          <KaoCol md={10}>
+          <FieldRight md={10}>
             <span>
               Rp. 15.000.000
             </span>
-          </KaoCol>
+          </FieldRight>
         </FieldBox>
 
         <FieldBox>
@@ -93,13 +94,13 @@ export const PanelTaksiran = () => {
               </SubTitle>
             </span>
           </KaoCol>
-          <KaoCol md={10}>
+          <FieldRight md={10}>
             <span>
-              <SubTitle align="left" size={14} bold="true">
+              <SubTitle align="right" size={14} bold="true">
               Rp. 15.000.000
               </SubTitle>
             </span>
-          </KaoCol>
+          </FieldRight>
         </FieldBox>
 
       </KaoCol>

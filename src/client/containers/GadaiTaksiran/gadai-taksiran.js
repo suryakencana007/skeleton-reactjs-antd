@@ -10,7 +10,7 @@ import {
   KaoCol,
   KaoButton,
 } from 'kao-components/ui';
-import { TitleContainer, SubTitle } from 'kao-components/common';
+import { FieldRight, TitleContainer, SubTitle } from 'kao-components/common';
 import { SliderInput } from 'kao-components/form';
 import { PanelTaksiran } from './widgets/panel-taksiran';
 
@@ -107,17 +107,17 @@ export default class GadaiTaksiran extends React.Component<{}> {
             <KaoCol xs={24} md={11} lg={9}>
               <KaoButton
                 type="secondary"
-                style={{ width: 180, margin: '8px 0' }}
+                size={180}
               >Kembali
               </KaoButton>
             </KaoCol>
-            <KaoCol xs={24} md={11} lg={9} style={{ textAlign: 'right' }}>
+            <FieldRight xs={24} md={11} lg={9}>
               <KaoButton
                 type="primary"
-                style={{ width: 180, margin: '8px 0' }}
+                size={180}
               >Ajukan Gadai
               </KaoButton>
-            </KaoCol>
+            </FieldRight>
           </KaoFlex>
         </KaoContainer>
         <KaoSpace size="xl" />
