@@ -5,7 +5,6 @@ import config from 'kao-config';
 
 
 const OnKlik = () => {
-  console.log('roooo');
   // alert('Delete', 'Are you sure???', [
   //   { text: 'Cancel', onPress: () => console.log('cancel') },
   //   { text: 'Ok', onPress: () => console.log('ok') },
@@ -26,7 +25,6 @@ const OnKlik = () => {
 
 
 const HelloWorld = () => {
-  console.log('HelloWorld');
   return (
     <KaoContainer>
       <KaoFlex justify="center">

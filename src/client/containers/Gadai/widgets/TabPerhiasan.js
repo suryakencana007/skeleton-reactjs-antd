@@ -75,14 +75,14 @@ export const SimulasiTabPerhiasan = () => (
       <KaoRow>
         <KaoCol xs={24} md={12}>
           <KaoButton
-            size={200}
+            width={200}
             type="dashed"
           >
             <Icon type="plus" /> Tambah Perhiasan lain
           </KaoButton>
         </KaoCol>
         <FieldRight xs={24} md={12}>
-          <KaoButton size={180} type="primary">Taksir</KaoButton>
+          <KaoButton width={180} type="primary">Taksir</KaoButton>
         </FieldRight>
       </KaoRow>
     </FormWrapper>

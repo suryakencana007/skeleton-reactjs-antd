@@ -25,17 +25,17 @@ const RootSub = styled(SubMenu)`
     background-color: rgb(225, 225, 225);
   }
 `;
-const Redot = styled.span`
-  width: 6px;
-  height: 6px;
-  background: #ED402F;
-  border-radius: 50%;
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: -13% 30%;
-`;
+// const Redot = styled.span`
+//   width: 6px;
+//   height: 6px;
+//   background: #ED402F;
+//   border-radius: 50%;
+//   display: block;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   margin: -13% 30%;
+//`;
 
 // root
 /**

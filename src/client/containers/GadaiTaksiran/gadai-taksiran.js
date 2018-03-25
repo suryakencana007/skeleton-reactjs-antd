@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
 import { Form, Input } from 'antd';
+import { SEO } from 'kao-components/common';
 import {
   KaoContainer,
   KaoSpace,
@@ -54,13 +54,12 @@ export default class GadaiTaksiran extends React.Component<{}> {
   render() {
     return (
       <Wrapper>
-        <Helmet
+        <SEO
+          description="Cara kerja dan langkah mudah solusi dana cepat anda dalam melakukan taksiran"
           title="Taksiran"
-        >
-          <meta name="description" content="Cara kerja dan langkah mudah solusi dana cepat anda dalam melakukan taksiran" />
-          <meta name="keywords" content="Langkah mudah melakukan taksiran, langkah taksiran online, pengajuan taksiran online, pengajuan gadai online" />
-          <link rel="canonical" href="http://mysite.com/example" />
-        </Helmet>
+          schema="Website"
+          path="/gadai"
+        />
         <KaoSpace size="lg" />
         <KaoSpace size="lg" />
         <KaoContainer>
@@ -107,14 +106,14 @@ export default class GadaiTaksiran extends React.Component<{}> {
             <KaoCol xs={24} md={11} lg={9}>
               <KaoButton
                 type="secondary"
-                size={180}
+                width={180}
               >Kembali
               </KaoButton>
             </KaoCol>
             <FieldRight xs={24} md={11} lg={9}>
               <KaoButton
                 type="primary"
-                size={180}
+                width={180}
               >Ajukan Gadai
               </KaoButton>
             </FieldRight>

@@ -62,48 +62,87 @@ module.exports = {
       }));
       config.plugins.push(new HtmlWebpackPugPlugin());
     }
+    // if (target === 'web') {
+    //   config.module.rules.push({
+    //     test: /\.less$/,
+    //     use: ['style-loader', 'css-loader',
+    //       {
+    //         loader: 'less-loader',
+    //         options: {
+    //           // theme vars, also can use theme.js instead of this.
+    //           modifyVars: {
+    //             '@primary-color': '#28B43C',
+    //             // '@info-color': '#1DA57A',
+    //             '@layout-header-background': '#fff',
+    //             '@success-color': '',
+    //             '@font-family-no-number': 'Source Sans Pro, sans-serif',
+    //             '@border-radius-base': 0,
+    //             '@border-radius-sm': 0
+    //           },
+    //         },
+    //       },
+    //     ],
+    //   });
+    //   razzleOptions = babelOptions({
+    //     options,
+    //     plugins: [
+    //       ['import', { libraryName: 'antd', style: true }],
+    //     ],
+    //   });
+    // }
+    // if (razzleOptions) {
+    //   config.module.rules[babelLoader].options = razzleOptions;
+    // }
     if (target === 'web') {
-      config.module.rules.push({
-        test: /\.less$/,
-        use: extractLess.extract({  // use the ExtractTextPlugin instance
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                minimize: true,
-              }
-            },
-            {
-              loader: 'less-loader',
-              options: {
-                modifyVars: {
-                  '@primary-color': '#28B43C',
-                  // '@info-color': '#1DA57A',
-                  '@layout-header-background': '#fff',
-                  '@success-color': '',
-                  '@font-family-no-number': 'Source Sans Pro, sans-serif',
-                  '@border-radius-base': 0,
-                  '@border-radius-sm': 0
-                },
-              },
-            },
-          ],
-          // use style-loader in development
-          fallback: 'style-loader',
-        }),
-      });
       razzleOptions = babelOptions({
         options,
         plugins: [
           ['import', { libraryName: 'antd', style: true }],
         ],
       });
-      config.plugins.push(extractLess);
+      if (razzleOptions) {
+        config.module.rules[babelLoader].options = razzleOptions;
+      }
+      return {
+        ...config,
+        module: {
+          ...config.module,
+          rules: [
+            ...config.module.rules,
+            {
+              test: /\.less$/,
+              use: extractLess.extract({  // use the ExtractTextPlugin instance
+                use: [
+                  {
+                    loader: 'css-loader',
+                  },
+                  {
+                    loader: 'less-loader',
+                    options: {
+                      modifyVars: {
+                        '@primary-color': '#28B43C',
+                        // '@info-color': '#1DA57A',
+                        '@layout-header-background': '#fff',
+                        '@success-color': '',
+                        '@font-family-no-number': 'Source Sans Pro, sans-serif',
+                        '@border-radius-base': 0,
+                        '@border-radius-sm': 0
+                      },
+                    },
+                  },
+                ],
+                // use style-loader in development
+                fallback: 'style-loader',
+              }),
+            },
+          ]
+        },
+        plugins: [
+          ...config.plugins,
+          extractLess
+        ]
+      };
     }
-    if (razzleOptions) {
-      config.module.rules[babelLoader].options = razzleOptions;
-    }
-
     return config;
-  },
+  }
 };

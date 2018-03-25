@@ -15,7 +15,7 @@ const TestimonyCard = KaoCard.extend`
   margin-top: ${50 / 16}rem !important;
   boxShadow: 0 6px 15px -2px rgba(171, 180, 198, 0.42);
   border: solid 0.5px #ebedf1;
-  background-color: #f5f5f5;
+  background-color: #f5f5f5 !important;
 `;
 const TestimonyItem = ({ data }) => {
   return (

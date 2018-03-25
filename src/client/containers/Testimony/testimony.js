@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icon } from 'antd';
 import {
   KaoSlick,
 } from 'kao-components/ui';
@@ -45,10 +44,6 @@ const data = [
     }
 ];
 
-
-const Pointer = ({ className, style, onClick, type }) => (
-    <Icon type={type} onClick={onClick} />
-);
 export default class Testimony extends React.Component<{}> {
   render() {
     return (

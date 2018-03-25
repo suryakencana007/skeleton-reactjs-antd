@@ -9,8 +9,7 @@ html
         link(rel="shortcut icon", type="image/png", href="/favicon.png")
         if assets.client.css
             link(rel="stylesheet", href=`${assets.client.css}`)
-        style
-            != styles
+        != styles
     body
         #app!=markup
         script(src=`${assets.client.js}`, defer=true)

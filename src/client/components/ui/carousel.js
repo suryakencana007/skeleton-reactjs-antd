@@ -7,10 +7,9 @@ const SlickItem = styled.div`
   width: ${props => (props.width / 16) || (280 / 16)}rem;
 `;
 
-export const CardSlickItem = ({ children, key, ...rest }) => (
+export const CardSlickItem = ({ children, ...rest }) => (
   <SlickItem
     className="slick-slide"
-    key={key}
     {...rest}
   >{children}
   </SlickItem>
@@ -30,28 +29,28 @@ const Slick = styled(Carousel)`
   }
 `;
 
-const IconWrapper = styled.div`
-  position: relative;
-  padding: 0px 30px;
+// const IconWrapper = styled.div`
+//   position: relative;
+//   padding: 0px 30px;
 
-  & .anticon {
-    position: absolute;
-    top: 50%;
-    width: 16px;
-    height: 16px;
-    line-height: 1;
-    font-size: 18px;
-    color: rgba(0, 0, 0, .25);
-  }
+//   & .anticon {
+//     position: absolute;
+//     top: 50%;
+//     width: 16px;
+//     height: 16px;
+//     line-height: 1;
+//     font-size: 18px;
+//     color: rgba(0, 0, 0, .25);
+//   }
 
-  & .anticon:first-child {
-    left: 0;
-  }
+//   & .anticon:first-child {
+//     left: 0;
+//   }
 
-  & .anticon:last-child {
-    right: 0;
-  }
-`;
+//   & .anticon:last-child {
+//     right: 0;
+//   }
+// `;
 
 const PrevIcon = ({ className, onClick }) => (
   <Icon className={className} onClick={onClick} type="left" />);

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import lodash from 'lodash';
-import cookie from 'js-cookie';
 import qs from 'qs';
 import pathToRegexp from 'path-to-regexp';
 import config from 'kao-config';
@@ -25,17 +24,17 @@ const fetch = (req) => {
   // api.defaults.headers.common['Authorization']
     let { url } = options;
     const {
-      auth = false,
       req, // eslint-disable-line no-shadow
       method = 'get',
       data,
+      token,
     } = options;
 
     const cloneData = lodash.cloneDeep(data);
 
     // for security header
-    const token = this.token || cookie.get('Authorization') || (req && req.cookies.Authorization) || null;
-    if (auth && token && token !== null) api.defaults.headers.common.Authorization = token;
+    const tokencookie = (req && req.cookies.Authorization) || token || null;
+    if (tokencookie && tokencookie !== null) api.defaults.headers.common.Authorization = token;
 
     try {
       let domin = '';
@@ -53,9 +52,8 @@ const fetch = (req) => {
       });
       url = domin + url;
     } catch (e) {
-      console.log(e.message);
+      // console.log(e.message);
     }
-
 
     switch (method.toLowerCase()) {
       case 'get':
@@ -78,7 +76,7 @@ const fetch = (req) => {
   };
 };
 
-export default function request(req = null) {
+export function request(req = null) {
   const api_fetch = fetch(req);
 
   return (options, dispatch) => {
@@ -91,7 +89,7 @@ export default function request(req = null) {
       }
     }
     if (dispatch instanceof Function) {
-      dispatch({ type: 'show' });
+      dispatch({ type: 'loading' });
     }
 
     return api_fetch(options).then((response) => {

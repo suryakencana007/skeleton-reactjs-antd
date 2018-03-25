@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withRouter from 'react-router-dom/withRouter';
 import styled from 'styled-components';
 import { renderRoutes } from 'react-router-config';
-import { Helmet } from 'react-helmet';
+import { SEO } from 'kao-components/common';
 import MainLayout from './layout';
 import 'kao-styles/App.css';
 
@@ -29,15 +29,12 @@ const propTypes = {
 
 const App = withRouter(({ route, history }) => (
   <Wrapper>
-    <Helmet
-      encodeSpecialCharacters={true}
-      titleTemplate="%s - Pinjam Indonesia"
-      defaultTitle="Pinjam Indonesia"
-    >
-      <meta name="description" content="Cara kerja dan langkah mudah solusi dana cepat anda dalam melakukan taksiran" />
-      <meta name="keywords" content="Langkah mudah melakukan taksiran, langkah taksiran online, pengajuan taksiran online, pengajuan gadai online" />
-      <link rel="canonical" href="http://mysite.com/example" />
-    </Helmet>
+    <SEO
+      schema="HomePage"
+      title="Gadai Syariah"
+      path="/"
+      contentType="Website"
+    />
     <Content id="main" data-qa-id="qa_main">
       <MainLayout history={history}>
       {renderRoutes(route.routes)}

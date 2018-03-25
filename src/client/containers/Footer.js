@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon, Divider } from 'antd';
 import styled from 'styled-components';
+import config from 'kao-config';
 import {
   KaoFooter,
 } from 'kao-components/layout';
@@ -59,13 +60,22 @@ export const Footer = () => (
           <KaoSpace size="md" />
           <KaoFlex justify="end">
             <KaoCol xs={24} md={8} lg={8}>
-              <KaoIcon image={Phone} size={24} /><span style={{ fontSize: 20 }}>+62 21 2750 6800</span>
+              <SubTitle align="right" size={20}>
+                <KaoIcon image={Phone} size={24} />
+                +62 21 2750 6800
+              </SubTitle>
             </KaoCol>
             <KaoCol xs={24} md={8} lg={8}>
-              <KaoIcon image={WA} size={24} /><span style={{ fontSize: 20 }}>0812 9008 5275</span>
+              <SubTitle align="right" size={20}>
+                <KaoIcon image={WA} size={24} />
+                0812 9008 5275
+              </SubTitle>
             </KaoCol>
             <KaoCol xs={24} md={8} lg={8}>
-              <KaoIcon image={Mail} size={24} /><span style={{ fontSize: 20 }}>cs@pinjam.co.id</span>
+              <SubTitle align="right" size={20}>
+                <KaoIcon image={Mail} size={24} />
+                cs@pinjam.co.id
+              </SubTitle>
             </KaoCol>
           </KaoFlex>
         </KaoCol>
@@ -120,20 +130,36 @@ export const Footer = () => (
         <KaoCol xs={24} md={7}>
           <KaoRow>
             <FieldRight xs={24}>
-              <KaoBadge size={60} box={32} paint="#68c6e1" color="#fff">
-                <Icon type="twitter" style={{ fontSize: 32 }}/>
-              </KaoBadge>
-              <KaoBadge size={60} box={32} paint="#5071a9" color="#fff">
-                <Icon type="facebook" style={{ fontSize: 32 }}/>
-              </KaoBadge>
+              <a
+                href="https://intip.in/pinjamTwitter"
+                target="_blank" rel="noopener noreferrer">
+                <KaoBadge size={60} box={32} paint="#68c6e1" color="#fff">
+                  <Icon type="twitter" style={{ fontSize: 32 }}/>
+                </KaoBadge>
+              </a>
+              <a
+                href="https://intip.in/pinjamFacebook"
+                target="_blank" rel="noopener noreferrer">
+                <KaoBadge size={60} box={32} paint="#5071a9" color="#fff">
+                  <Icon type="facebook" style={{ fontSize: 32 }}/>
+                </KaoBadge>
+              </a>
             </FieldRight>
             <FieldRight xs={24}>
-              <KaoBadge size={60} box={32} paint="#bc2a8d" color="#fff">
-                <Icon type="instagram" style={{ fontSize: 32 }}/>
-              </KaoBadge>
-              <KaoBadge size={60} box={32} paint="#e15d5b" color="#fff">
-                <Icon type="youtube" style={{ fontSize: 32 }}/>
-              </KaoBadge>
+              <a
+                href="https://intip.in/pinjamIG"
+                target="_blank" rel="noopener noreferrer">
+                <KaoBadge size={60} box={32} paint="#bc2a8d" color="#fff">
+                  <Icon type="instagram" style={{ fontSize: 32 }}/>
+                </KaoBadge>
+              </a>
+              <a
+                href="https://intip.in/pinjamyoutube"
+                target="_blank" rel="noopener noreferrer">
+                <KaoBadge size={60} box={32} paint="#e15d5b" color="#fff">
+                  <Icon type="youtube" style={{ fontSize: 32 }}/>
+                </KaoBadge>
+              </a>
             </FieldRight>
           </KaoRow>
         </KaoCol>
@@ -142,7 +168,8 @@ export const Footer = () => (
       <KaoSpace size="lg" />
       <KaoRow>
         <KaoCol xs={24} md={17}>
-          <SubTitle align="left" size={12} style={{ lineHeight: 1.57 }}>PT. Gadai Pinjam Indonesia (perusahaan) badan hukum yang telah terdaftar dan mendapatkan izin OJK dengan nomor
+          <SubTitle align="left" size={12} style={{ lineHeight: 1.57 }}>
+          PT. Gadai Pinjam Indonesia (perusahaan) badan hukum yang telah terdaftar dan mendapatkan izin OJK dengan nomor
 KEP-4 / D.05/2017. Pinjaman dari perusahaan adalah pinjaman melalui proses gadai dan fidusia. Segala penawaran dan estimasi taksiran yang diberikan kepada pengguna merupakan angka kisaran yang tidak mengikat. Apabila terjadi perbedaan perhitungan, maka perhitungan yang digunakan tetap mengacu pada perhitungan taksiran langsung oleh pihak kami. Informasi yang terdapat pada situs pinjam.co.id selalu diperbarui dan dapat berubah sewaktu-waktu tanpa pemberitahuan sebelumnya. {'"'}Pinjam.co.id{'"'} adalah merek dagang terdaftar. Seluruh hak kekayaan intelektual telah dilindungi Undang-Undang.
           </SubTitle>
         </KaoCol>
@@ -169,7 +196,7 @@ KEP-4 / D.05/2017. Pinjaman dari perusahaan adalah pinjaman melalui proses gadai
       <KaoRow>
         <KaoCol xs={24}>
           <SubTitle align="left" size={12}>
-          &copy; 2017 PT Gadai Pinjam Indonesia. All Rights Reserved.&nbsp;&nbsp; v 2.1.0
+            {config.SEO.copyright}&nbsp;&nbsp;All Rights Reserved.&nbsp;&nbsp;{config.VERSION}
           </SubTitle>
         </KaoCol>
       </KaoRow>

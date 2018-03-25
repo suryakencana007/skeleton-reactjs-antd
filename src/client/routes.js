@@ -1,4 +1,4 @@
-import { Home, Counter, Gadai, GadaiTaksiran } from 'kao-containers';
+import { Home, Gadai, GadaiTaksiran } from 'kao-containers';
 import App from './app';
 
 export default [

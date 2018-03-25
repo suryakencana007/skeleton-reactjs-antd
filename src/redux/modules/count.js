@@ -4,11 +4,10 @@ export default {
   state: 0,
   actions: {
     async add({ dispatch, commit }, payload, { api }) {
-      const response = await api({
-        url: 'marketprice/category/10',
-        method: 'get',
-      }, dispatch);
-      console.log(response);
+      // const response = await api({
+      //   url: 'marketprice/category/10',
+      //   method: 'get',
+      // }, dispatch);
       await delay(1);
       commit('addDone', payload);
     },

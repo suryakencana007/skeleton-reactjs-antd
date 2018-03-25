@@ -15,7 +15,7 @@ import { ServerStyleSheet } from 'styled-components';
 import { Helmet } from 'react-helmet';
 import routers from 'kao-client/routes';
 import configureStore from 'kao-store';
-import { request as api } from 'kao-util';
+import { request as api, rehydrate } from 'kao-util';
 
 process.title = process.env.RAZZLE_APP;
 
@@ -24,6 +24,9 @@ const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
 // Environment variables
 const isDevelopment = process.env.NODE_ENV === 'development';
+
+// Create or Get token
+const token = rehydrate();
 
 const server = express();
 
@@ -69,7 +72,7 @@ function render(req, res) {
   };
 
   // Create a new Redux store instance
-  const store = configureStore(preloadedState, { api: api(req) });
+  const store = configureStore(preloadedState, { token, api: api(req) });
   // Create the server side style sheet
   const sheet = new ServerStyleSheet();
   const app = (

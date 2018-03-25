@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
+import { SEO } from 'kao-components/common';
 import {
   media,
   KaoContainer,
@@ -54,6 +54,7 @@ const SimulasiCard = styled(KaoCard)`
     padding: 0 !important;
   }
   .ant-tabs-nav {
+    font-size: 14px !important;
     width: 100%;
   }
   .ant-tabs-tab {
@@ -69,19 +70,6 @@ const SimulasiTabContent = {
   logam: <SimulasiTabLogam />
 };
 
-const Slick = styled.div`
-  & .slick-slide {
-    text-align: center;
-    height: 160px;
-    line-height: 160px;
-    background: #364d79;
-    overflow: hidden;
-  }
-
-  .slick-slide h3 {
-    color: #fff;
-  }
-`;
 export default class Gadai extends React.PureComponent<{}> {
   state = {
     tab: 'perhiasan',
@@ -96,13 +84,12 @@ export default class Gadai extends React.PureComponent<{}> {
   render() {
     return (
       <Wrapper>
-        <Helmet
+        <SEO
+          description="Cara kerja dan langkah mudah solusi dana cepat anda dalam melakukan taksiran"
           title="Gadai Syariah"
-        >
-          <meta name="description" content="Cara kerja dan langkah mudah solusi dana cepat anda dalam melakukan taksiran" />
-          <meta name="keywords" content="Langkah mudah melakukan taksiran, langkah taksiran online, pengajuan taksiran online, pengajuan gadai online" />
-          <link rel="canonical" href="http://mysite.com/example" />
-        </Helmet>
+          schema="Website"
+          path="/gadai"
+        />
         <KaoFlex justify="space-around" align="middle">
           <KaoCol span={24}>
             <KaoBG image={BGGadai} width="100%" height="100%">

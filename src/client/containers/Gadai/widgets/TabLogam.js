@@ -8,7 +8,6 @@ import {
   KaoCol,
   KaoButton
 } from 'kao-components/ui';
-import { FieldRight } from 'kao-components/common';
 
 const FormItem = Form.Item;
 const FormWrapper = styled(Form)`
@@ -54,7 +53,7 @@ export const SimulasiTabLogam = () => (
           <FormLogam n={2} />
           <FormLogam n={3} />
           <KaoButton
-            size={210}
+            width={210}
             type="dashed"
           >
             <Icon type="plus" /> Tambah Logam Mulia lain
@@ -62,7 +61,7 @@ export const SimulasiTabLogam = () => (
         </KaoCol>
         <KaoCol xs={24} md={{ span: 9, offset: 1 }}>
           <KaoSpace size="xl" />
-          <KaoButton size={180} type="primary">Taksir</KaoButton>
+          <KaoButton width={180} type="primary">Taksir</KaoButton>
         </KaoCol>
       </KaoFlex>
     </FormWrapper>
