@@ -8,7 +8,7 @@ import { request as api, rehydrate } from 'kao-util';
 import routers from './routes';
 
 // Environment variables
-const isDevelopment = process.env.NODE_ENV === 'development';
+// const isDevelopment = process.env.NODE_ENV === 'development';
 
 const token = rehydrate();
 

@@ -39,6 +39,11 @@ const FooterLink = styled(Link)`
   text-decoration: none;
   font-weight: normal;
 `;
+const FooterExternal = styled.a`
+  color: #fff;
+  text-decoration: none;
+  font-weight: normal;
+`;
 
 export const Footer = () => (
   <FooterLayout>
@@ -122,7 +127,7 @@ export const Footer = () => (
                 <li><FooterLink to="/lokasi-cabang-mitra">Lokasi Cabang &amp; Mitra</FooterLink></li>
                 <li><FooterLink to="/testimoni">Testimoni</FooterLink></li>
                 <li><FooterLink to="/media">Media</FooterLink></li>
-                <li><FooterLink to="http://pinjam.co.id/blog" target="_blank">Blog</FooterLink></li>
+                <li><FooterExternal href="http://pinjam.co.id/blog" target="_blank">Blog</FooterExternal></li>
               </KaoList>
             </KaoCol>
           </KaoRow>
